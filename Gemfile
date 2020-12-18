@@ -8,3 +8,6 @@ gem "rspec", "~> 3.0"
 
 gem "pry"
 gem "pry-rescue"
+gem "pry-stack_explorer"
+
+gem "activesupport"

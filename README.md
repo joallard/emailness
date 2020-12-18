@@ -53,6 +53,8 @@ Emailness::Validator
     who-needs-dns@[172.16.11.222] ✘
 ```
 
+*TODO: Update this automatically*
+
 If you would like to add a case, simply open an issue or PR.
 
 ## Usage

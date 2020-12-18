@@ -2,6 +2,8 @@ require "bundler/setup"
 require "pry"
 require "emailness"
 
+require_relative "support/validity_macros"
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
