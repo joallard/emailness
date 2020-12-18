@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jonathan Allard"]
   spec.email         = ["jonathan@allard.io"]
 
-  spec.summary       = %q{TOD0: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TOD0: Write a longer description or delete this line.}
+  spec.summary       = %q{Care very little about email validation}
+  # spec.description   = %q{TOD0: Write a longer description or delete this line.}
   spec.homepage      = "https://github.com/joallard/emailness"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
