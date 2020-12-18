@@ -31,7 +31,7 @@ And have a great day.
 ---
 
 ## Test cases
-The spec file is made on purpose to be simple.
+The [spec file](https://github.com/joallard/emailness/blob/master/spec/emailness_spec.rb) strives to be simple on purpose.
 
 ```
 $ rspec
