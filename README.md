@@ -3,13 +3,14 @@
 
 Email validation with sensible defaults so you can go care about more important things.
 
+***TODO: The Rails validator isn't finished yet.***
+
+* Strives to be trivially easy to choose and use
 * Meant to match HTML5 email validation, happily deviates from RFC 5322
 * Email tags with '+' are allowed
 * Two consecutive dots ('..') are not
 * Cares very little about most other things
 
-**TODO: Make the Rails validator work/test it.**
-**TODO: Publish gem**
 
 Add the gem:
 
@@ -24,6 +25,8 @@ validates_emailness_of :email
 ```
 
 And have a great day.
+
+*If this gem is what you needed but had any hesitation or cognitive load in choosing it, please let me know!*
 
 ---
 
