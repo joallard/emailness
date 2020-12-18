@@ -26,7 +26,7 @@ validates_emailness_of :email
 
 And have a great day.
 
-*If this gem is what you needed but had any hesitation or cognitive load in choosing it, please let me know!*
+*This gem is meant to be trivially easy to choose, install, and use. If that could be improved any way, please let me know!*
 
 ---
 
