@@ -7,7 +7,18 @@ Gem::Specification.new do |spec|
   spec.email         = ["jonathan@allard.io"]
 
   spec.summary       = %q{Care very little about email validation}
-  # spec.description   = %q{TOD0: Write a longer description or delete this line.}
+  spec.description   = <<~md
+
+    Email validation with sensible defaults so you can go care about more
+    important things.
+
+    * Strives to be trivially easy to choose and use
+    * Meant to match HTML5 email validation, happily deviates from RFC 5322
+    * Email tags with '+' are allowed
+    * Two consecutive dots ('..') are not
+    * Cares very little about most other things
+  md
+
   spec.homepage      = "https://github.com/joallard/emailness"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
