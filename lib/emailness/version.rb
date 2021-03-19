@@ -1,4 +1,4 @@
 module Emailness
-  VERSION = "0.1.0.alpha.2"
+  VERSION = "0.1.0.beta.1"
   # then `rake release`
 end
