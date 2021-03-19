@@ -18,5 +18,12 @@ module Emailness
     true
   end
 
+  def self.const_missing(name)
+    return super unless name == :Validator
+    require "emailness/validator"
+
+    defined?(Emailness::Validator) ? Emailness::Validator : super
+  end
+
   class Error < StandardError; end
 end
