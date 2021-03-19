@@ -10,4 +10,5 @@ gem "pry"
 gem "pry-rescue"
 gem "pry-stack_explorer"
 
-gem "activesupport"
+gem "activesupport", require: "active_support"
+gem "activemodel", require: "active_model"

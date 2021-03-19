@@ -1,5 +1,6 @@
 require "bundler/setup"
-require "pry"
+Bundler.require
+
 require "emailness"
 
 require_relative "support/validity_macros"
