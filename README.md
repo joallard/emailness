@@ -1,46 +1,52 @@
 # Emailness
-**Care very little about email validation**
+Nothing to configure, no arcane standard to patch around.
 
-Email validation with reasonable defaults so you can go care about more important things.
+Email validation with reasonable defaults so you can **go care about more important things**. It just checks the "emailness" of the string, that's it.
 
 **Current status: Beta**
 
+[Test Cases](#test-cases) · [Usage](#usage)
+
 ### Goals
-* Be trivially **easy to choose and use**
-* Meant to match HTML5 email validation, *happily deviates* from RFC 5322
+* Be trivially easy to use (and choose)
+* Catch most common entry errors without being too strict
+* Meant to match **HTML5 email validation**, *happily deviates* from RFC 5322
 
-### What is allowed/not allowed (highlights)
-* Allowed: **Email tags** with '+'
-* Not allowed: Two consecutive dots ('..')
+### Highlights of what is allowed/not allowed
+* Allowed
+    * **Email tags** with '+'
+* Not allowed
+    * Two consecutive dots: '..'
+    * Two at signs: '@@'
 
-Other questions? See more [test cases &rarr;](#test-cases)
+See the other [test cases &rarr;](#test-cases)
 
-## Quick Usage
-
+## Usage
+### Install
 Add the gem:
 
-```
+```sh
 bundle add emailness
 ```
 
-In Rails, add it to your model:
+### Use
+In **Rails**, add it to your model:
 
 ```ruby
 # class Thing < ApplicationRecord
 
-  validates_email_format_of :email
+validates_email_format_of :email
 
-# end
 ```
 
-In vanilla, just use the module:
+Or, in **plain Ruby**, just use the module:
 
 ```ruby
 Emailness.valid?("emailness@rubygems.org") # => true|false
 ```
 
-Commit:
-```
+### Commit
+```sh
 git commit [--all] -m "$MODEL: Validate email address"
 ```
 
@@ -74,8 +80,8 @@ And have a great day.
 | IPv6 host     | `send.to.my.server@[::1]`        | ✘ invalid |
 | IPv4 host     | `who-needs-dns@[172.16.11.222]"` | ✘ invalid |
 
-Those examples are in the
-[spec file](https://github.com/joallard/emailness/blob/master/spec/emailness_spec.rb), which strives to be simple on purpose.
+Those examples correspond to the
+[spec file](https://github.com/joallard/emailness/blob/master/spec/emailness_spec.rb), which is simple on purpose.
 
 *TODO: Update the tables automatically*
 
