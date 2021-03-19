@@ -1,16 +1,21 @@
 # Emailness
 **Care very little about email validation**
 
-Email validation with sensible defaults so you can go care about more important things.
+Email validation with reasonable defaults so you can go care about more important things.
 
 ***TODO: The Rails validator isn't finished yet.***
 
-* Strives to be trivially easy to choose and use
-* Meant to match HTML5 email validation, happily deviates from RFC 5322
-* Email tags with '+' are allowed
-* Two consecutive dots ('..') are not
-* Cares very little about most other things
+### Goals
+* Be trivially **easy to choose and use**
+* Meant to match HTML5 email validation, *happily deviates* from RFC 5322
 
+### What is allowed/not allowed (highlights)
+* Allowed: **Email tags** with '+'
+* Not allowed: Two consecutive dots ('..')
+
+Other questions? See more [test cases &rarr;](#test-cases)
+
+## Quick Usage
 
 Add the gem:
 
@@ -18,55 +23,64 @@ Add the gem:
 bundle add emailness
 ```
 
-Add it to your model:
+In Rails, add it to your model:
 
+```ruby
+# class Thing < ApplicationRecord
+
+  validates_email_format_of :email
+
+# end
 ```
-validates_emailness_of :email
+
+In vanilla, just use the module:
+
+```ruby
+Emailness.valid?("emailness@rubygems.org") # => true|false
+```
+
+Commit:
+```
+git commit [--all] -m "$MODEL: Validate email address"
 ```
 
 And have a great day.
 
-*This gem is meant to be trivially easy to choose, install, and use. If that could be improved any way, please let me know!*
+## Test Cases
 
----
+### Should be valid
+| Case                       | Example                                  | Result    |
+|----------------------------|------------------------------------------|-----------|
+| Tag                        | `jon+tag@hey.com`                        | ✔ valid   |
+| 2nd level TLD              | `email.me@ejemplo.com.ar`                | ✔ valid   |
+| IDN (xn--)                 | `jon@xn--acestunbeaudomaine-6ub.qc.ca`   | ✔ valid   |
+| Single apostrophe          | `johnson.o'jonathan@email.com`           | ✔ valid   |
+| Single TLD                 | `fancytld@tld`                           | ✔ valid   |
 
-## Test cases
-The [spec file](https://github.com/joallard/emailness/blob/master/spec/emailness_spec.rb) strives to be simple on purpose.
+### Should be invalid
+| Case                       | Example                                  | Result    |
+|----------------------------|------------------------------------------|-----------|
+| Double dot                 | `double..dot@gmail.com`                  | ✘ invalid |
+| Trailing hyphen in domain  | `local@trailing-hyphen-.com`             | ✘ invalid |
+| Leading digit in domain    | `leadingdigit@9domain.com`               | ✘ invalid |
+| White space                | `white space@example.com`                | ✘ invalid |
+| Escaped white space        | `"even_white_space escaped"@example.com` | ✘ invalid |
+| Two at-signs               | `email@@veryat.com`                      | ✘ invalid |
 
-```
-$ rspec
+### No guarantees (undefined)
+| Case          | Example                          | Current   |
+|---------------|----------------------------------|-----------|
+| Local comment | `jon(is_very_smart)@email.com`   | ✘ invalid |
+| IPv6 host     | `send.to.my.server@[::1]`        | ✘ invalid |
+| IPv4 host     | `who-needs-dns@[172.16.11.222]"` | ✘ invalid |
 
-Emailness::Validator
-  valid (✔)
-    jon+tag@hey.com ✔
-    email.me@ejemplo.com.ar ✔
-    jon@xn--acestunbeaudomaine-6ub.qc.ca ✔
-    johnson.o'jonathan@email.com ✔
-    fancytld@tld ✔
-  invalid (✘)
-    double..dot@gmail.com ✘
-    local@trailing-hyphen-.com ✘
-    leadingdigit@9domain.com ✘
-    white space@example.com ✘
-    "even_white_space\ escaped"@example.com ✘
-    email@@veryat.com ✘
-  no guarantees (✽)
-    jon(is_very_smart)@email.com ✘
-    send.to.my.server@[::1] ✘
-    who-needs-dns@[172.16.11.222] ✘
-```
+Those examples are in the
+[spec file](https://github.com/joallard/emailness/blob/master/spec/emailness_spec.rb), which strives to be simple on purpose.
 
-*TODO: Update this automatically*
+*TODO: Update the tables automatically*
 
 If you would like to add a case, simply open an issue or PR.
 
-## Usage
-
-Either use it in Rails, or vanilla:
-
-```
-Emailness.valid?(email)  # true/false
-```
 
 ## Contributing
 Are welcome:
