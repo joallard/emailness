@@ -3,7 +3,7 @@
 
 Email validation with reasonable defaults so you can go care about more important things.
 
-***TODO: The Rails validator isn't finished yet.***
+**Current status: Beta**
 
 ### Goals
 * Be trivially **easy to choose and use**
